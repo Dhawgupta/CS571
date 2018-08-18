@@ -13,9 +13,14 @@ check points
 
 
 def h1(current_state, goal_state):
-	# COmpute the h1 score which is 0 for the current approach
+	'''
+	This is the plain implementation with h(n) = 0
+	:param current_state:  The current state
+	:param goal_state: Th goal state against which we will calculate the cost
+	:return: return the cost
+	'''
 	return 0
-	# pass
+
 
 def h2(current, goal):
 	# compute the h2 score of the current and teh goal state which is the number

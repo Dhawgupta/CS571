@@ -2,10 +2,13 @@
 # author. : dhawal gupta
 # input is working
 # this contains more verbose as well outputs statement for debugging
+# make this code presentable
 
 import random
 import numpy as np
 from make_puzzle import generate_puzzle
+import sys
+
 '''
 check points
 
@@ -264,11 +267,9 @@ while bool(open_list): # empty dictionaries evaluate to False
 			h_cost = h2(s, goal)# heuristic cost
 			# add the cost and to the open list
 			open_list[index] = g_cost + h_cost
-	if real_cost%10 == 0:
+	if real_cost%100 == 0:
 		print("Len : {}".format(len(open_list)))
 		print("Cost/Iter : {}".format(real_cost))
-
-
 
 
 if success:

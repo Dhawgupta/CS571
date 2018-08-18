@@ -1,14 +1,13 @@
 
 # author. : dhawal gupta
 # input is working
+# this contains more verbose as well outputs statement for debugging
+# make this code presentable
 
 import random
 import numpy as np
-'''
-check points
-
-'''
-
+from make_puzzle import generate_puzzle
+import sys
 
 def h1(current_state, goal_state):
 	# COmpute the h1 score which is 0 for the current approach
@@ -35,29 +34,30 @@ def h3(current, goal, current_hash = None, goal_hash = None):
 		current_hash = dict()
 		# if the state_hash is none the create the same
 		current_hash = dict()
-		for row in range(len(goal_hash)):
-			for col in range(len(goal_hash[0])):
-				current_hash[state[row][col]] = [row,col]
+		for row in range(len(goal)):
+			for col in range(len(goal[0])):
+				current_hash[current[row][col]] = [row,col]
 	if goal_hash == None:
 		goal_hash = dict()
-		# if the state_hash is none the create the same
-		state_hash = dict()
 		for row in range(len(goal_hash)):
 			for col in range(len(goal_hash[0])):
-				goal_hash[state[row][col]] = [row,col]
+				goal_hash[goal[row][col]] = [row,col]
 	# now we will compute the score for the states
 	for row in range(len(current)):
 		for col in range(len(current[0])):
 			# here we will accouting the distance for the blank as well
+
 			x,y = goal_hash[current[row][col]]
 			# we will take the abs of both
-			cost = cost + abs(row -  x  ) + abs(col - y)
+			if current[row][col] == 0:
+				pass
+			else:
+				cost = cost + abs(row -  x  ) + abs(col - y)
 	return cost
 
 def h4(current, goal):
 	# this will implement the upper bound on the h* function
 	pass
-
 
 def valid_action(state, action, state_hash = None): # state hash is not very useful but keeping oit to make it eacy tpt worj 2ith
 	# check the validity of the action
@@ -84,7 +84,6 @@ def valid_action(state, action, state_hash = None): # state hash is not very use
 		if y == r-1:
 			return False
 	return True
-
 
 def execute_action(state,action , state_hash = None):
 	'''
@@ -132,88 +131,121 @@ def execute_action(state,action , state_hash = None):
 		new_state[y,x] = tile
 		return (new_state,state_hash)
 	else:
-		print ("Action not valid")
+		raise Exception("Action not valid")
 
 		# move blank up
+
+def print_path(all_states , parent, parent_index):
+	'''
+	parent : It is the dictionary containing index and parents
+	parent_index :  teh dindex of the p[arent]
+	'''
+	if parent_index == -1:
+		return
+	print_path(all_states, parent, parent[parent_index])
+	print("{}\n".format(all_states[parent_index]))
+
 
 def arreq_in_list(myarr, list_arrays):
 	# funtion to check if the myarr exists in the liust_arraus
     return next((True for elem in list_arrays if np.array_equal(elem, myarr)), False)
 
 
-
-# first we will read the input  from the file
-start_state = "start.txt" # this will contain the start the state of the agnet
-end_state = "end.txt" # this file will contain the end or goal state of the agent
-
-# assumong the puzzle is only 3x3 and no bigger
-state = np.zeros((3,3))
-goal =  np.zeros((3,3))
-state_hash = dict()
-goal_hash = dict()
-
-
-# we will represent the blank state as 0 for out case
-
-with open(start_state) as fil:
-	# read the fule
-	row = 0 # the currebt row
-	line = fil.readline()
-	while line:
-		for col,no in enumerate(line.split()):
-			state[row][col] = no
-		line = fil.readline()
-		row = row + 1
-
-
-	# pass
-
-with open(end_state) as fil:
-	# read the goal state
-	row = 0 # the currebt row
-	line = fil.readline()
-	while line:
-		for col,no in enumerate(line.split()):
-			goal[row][col] = no
-		line = fil.readline()
-		row = row + 1
-	# pass
-
-# Fill the goal and state hashed to make operations faster
-
-for row in range(len(state)):
-	for col in range(len(state[0])):
-		goal_hash[goal[row][col]] = [row,col]
-		state_hash[state[row][col]] = [row,col]
-
-
-def generate_puzzle(goal,steps = 1000):
-	'''
-	:param goal: The goal state from which we have to produce the puzzle
-	:para steps: The number of random action to be taken
-	:return: Return the puzzled matrix
-	'''
-	puzzle = goal.copy()
-	print(valid_action(puzzle, 0))
-	shuffle = int(steps)
-	action = 0
-	for step in range(shuffle):
-		action = random.randint(0, 3)
-		# print(type(action))
-		if valid_action(puzzle, action):  # if the action is vald
-			puzzle = execute_action(puzzle, action)[0]
-	return puzzle
-
-
 if __name__ == "__main__":
-	puzzle = goal.copy()
-	print(valid_action(puzzle, 0))
-	shuffle = int(1e4)
-	action = 0
-	for step in range(shuffle):
-		action = random.randint(0,3)
-		# print(type(action))
-		if valid_action(puzzle, action) : # if the action is vald
-			puzzle = execute_action(puzzle, action)[0]
-	print(puzzle)
+	# first we will read the input  from the file
+	start_state = "start.txt" # this will contain the start the state of the agnet
+	end_state = "end.txt" # this file will contain the end or goal state of the agent
 
+	# assumong the puzzle is only 3x3 and no bigger
+	state = np.zeros((3,3))
+	goal =  np.zeros((3,3))
+	state.astype(int)
+	goal.astype(int)
+	state_hash = dict()
+	goal_hash = dict()
+
+
+
+	# to read the starting state of the game
+	with open(start_state) as fil:
+		# read the fule
+		row = 0 # the currebt row
+		line = fil.readline()
+		while line:
+			for col,no in enumerate(line.split()):
+				state[row][col] = no
+			line = fil.readline()
+			row = row + 1
+
+
+		# pass
+
+	# to read the goal state of the game
+	with open(end_state) as fil:
+		# read the goal state
+		row = 0 # the currebt row
+		line = fil.readline()
+		while line:
+			for col,no in enumerate(line.split()):
+				goal[row][col] = no
+			line = fil.readline()
+			row = row + 1
+		# pass
+
+	# Fill the goal and state hashed to make operations faster
+
+	for row in range(len(state)):
+		for col in range(len(state[0])):
+			goal_hash[goal[row][col]] = [row,col]
+			state_hash[state[row][col]] = [row,col]
+
+
+	open_list = dict()
+	close_list = dict()
+	all_states = [] # a list which will store all the states and we will use the index as a hash value for index of the lists
+	real_cost = 0 # the g(n) cost encountered till now
+	parents = []
+	parent = dict()
+	# randomly procude the start state
+	state = generate_puzzle(goal, steps = 50).astype(int)
+	print("The start state : \n{}\nThe Goal state is : \n{}".format(state, goal))
+
+	all_states.append(state)
+	parent[0] = -1
+	parents.append(-1)
+	open_list[0] = 0 # cost initially
+	success = False
+	goal_index = 0
+	while bool(open_list): # empty dictionaries evaluate to False
+		sno = min(open_list, key=open_list.get)  # state no with the lowest cost
+		current_state = all_states[sno] # get the current state
+		if (current_state == goal).all():
+			goal_index = sno
+			success = True
+			break
+		new_states = []
+		for action in range(4): # for all possible actions
+			if valid_action(current_state, action): # check if the action is valid or not
+				new_states.append(execute_action(current_state, action)[0].astype(int))
+		del open_list[sno]
+		close_list[sno] = real_cost # get the real cost of the state
+		real_cost = real_cost + 1
+		for s in new_states:
+			if not arreq_in_list(s, all_states) :
+				index = len(all_states)  # len will be one greater than the last value index
+				all_states.append(s)
+				g_cost = real_cost
+				h_cost = h3(s, goal)# heuristic cost
+				open_list[index] = g_cost + h_cost
+				parents.append(sno)
+            	parent[index] = sno
+		if real_cost%100 == 0:
+			print("Len : {}".format(len(open_list)))
+			print("Cost/Iter : {}".format(real_cost))
+
+
+	if success:
+		print ("Success Found Path")
+		print_path(all_states, parent, goal_index)
+	else:
+		print ("Path not found")
