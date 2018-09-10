@@ -9,6 +9,7 @@
 2. `main_main.py` class contains the functiont to solve any expressino
 3. It chains the expression , sub expression to solve them and achieve sub expressions.
 4. `main3.py` solver is more powerful i.e. it can prove mmore theorems for eg `'((P^Q)>(PVP))'` can't be solved using the main_main solver, whereas it can be solved using .
+5. Running the code : `python main3.py`
 
 ## Things yet to be implemented in the code 
 1. Make the `main3.py` program in the format such as to take in the predicate input.
