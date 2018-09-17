@@ -82,13 +82,6 @@ expr3 = '((P^Q)>(PVP))'
 expr4 = '((PVQ)>(PVP))' # according to me this should fail
 
 
-# print("Expression : {}\nSimplified : {}".format(expr1, simplify_expression(expr1)))
-# print("Expression : {}\nSimplified : {}".format(expr2, simplify_expression(expr2)))
-# print("Expression : {}\nSimplified : {}".format(expr3, simplify_expression(expr3)))
-
-# print(simplify_expression(expr2))
-# print(simplify_expression(expr3))
-
 left_hand_expressions = [] # the left hand expressions while getting a F on the rights
 # we will input sets of values with left hand and right hand.
 
@@ -138,6 +131,9 @@ while expression != 'F':
 
     expression = rhs
 
+print("The left hand side terms are : ")
+for en, ep in enumerate(left_hand_expressions):
+    print(en, ep)
 def generate_left_hand_expression(expr):
     '''
     THis function will generate a list containing the componenets in the left hand side of the deductino theorem to 
