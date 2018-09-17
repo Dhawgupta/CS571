@@ -74,7 +74,7 @@ def simplify_expression(expr):
                 else:
                     return "((" + exp1 + ">(" + exp2 + ">F))>F)" 
 
-    print("Single Expression  : {}".format(expr))
+    # print("Single Expression  : {}".format(expr))
     return  "(" + expr + ")"
 
 
@@ -264,7 +264,7 @@ def create_all_possible_axioms(set_all_expression , axiom, num_elements):
 def Solvable_Expression(expres = expr3, set_all_expression = None):
     left_hand_expressions = []
     Expr = expres
-    print("Expression : {}\nSimplified : {}".format(Expr, simplify_expression(Expr)))
+    # print("Expression : {}\nSimplified : {}".format(Expr, simplify_expression(Expr)))
 
     expression = simplify_expression(Expr)
     
@@ -272,7 +272,7 @@ def Solvable_Expression(expres = expr3, set_all_expression = None):
         # if the right side is not F, separate the left and right side
 
         (lhs, rhs) = separate_expression(expression)
-        print(" {}   :   {}".format(lhs, rhs))
+        # print(" {}   :   {}".format(lhs, rhs))
         if lhs == None:
             # i.e. we have reached to a single term and 
             if rhs != 'F':
@@ -360,7 +360,7 @@ def Solvable_Expression(expres = expr3, set_all_expression = None):
     iter = 0
     
     while 'F' not in set_all_expression:
-        print("Iterations  : {}".format(iter))
+        # print("Iterations  : {}".format(iter))
         (set_all_expression_new,parents) = apply_modes_ponens(set_all_expression, 1)
         if set_all_expression.issubset(set_all_expression_new) and set_all_expression_new.issubset(set_all_expression):
             # here I have modified the code so that it asks the user for additional theorem
@@ -386,12 +386,12 @@ def Solvable_Expression(expres = expr3, set_all_expression = None):
         # set_all_expression_new  = set_all_expression_new.union(axioms3_set)
         set_all_expression  = set_all_expression_new.copy()
         iter += 1
-        print("Moving to next iteration")
+        # print("Moving to next iteration")
 
     # print(set_all_expression)
     # for a in set_all_expression:
     #     print(a)
-    print("Does the F element exists or not : {}, \n If the above value is True -> that the theorem is valid otherwise the further work has to be done yet :)".format('F' in set_all_expression))
+    # print("Does the F element exists or not : {}, \n If the above value is True -> that the theorem is valid otherwise the further work has to be done yet :)".format('F' in set_all_expression))
     if 'F' in set_all_expression:
         return True
     else:

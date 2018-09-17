@@ -35,7 +35,7 @@ def simplify_expression(expr):
         expr = expr[:-1]
     # print(expr)
     no_brackets = 0
-    for it, i in enumerate(expr):
+    for it, i in enumerate(expr): #[4,2,5,2]
         # print(i, no_brackets)
         if i == '(':
             no_brackets += 1
@@ -107,6 +107,14 @@ def separate_expression(expr):
 
 # change the expression value over here for 
 Expr = expr3
+print("Information about the system : ")
+print("The system is valid only for properly bracketed expression, along with outermost brackets eg (P>((P>F)^(Q>F)))")
+print("Following convertions are followed in the system")
+print("Implication is represented by : '>' ")
+print("And is represented by : '^' ")
+print("Or is represented by : 'V' ")
+print("Not is represented by : '~' ")
+
 Expr = input("Enter the Theorem to be proved/disproved > ")
 print("Expression : {}\nSimplified : {}".format(Expr, simplify_expression(Expr)))
 
@@ -392,12 +400,16 @@ while 'F' not in set_all_expression:
     # set_all_expression_new  = set_all_expression_new.union(axioms3_set)
     set_all_expression  = set_all_expression_new.copy()
     iter += 1
-    print("Moving to next iteration")
+    # print("Moving to next iteration")
 
 # print(set_all_expression)
 # for a in set_all_expression:
 #     print(a)
-print("Does the F element exists or not : {}, \n If the above value is True -> that the theorem is valid otherwise the further work has to be done yet :)".format('F' in set_all_expression))
+if 'F' in set_all_expression:
+    print("Theorem is Valid")
+else:
+    print("Theorem is not valid for this system")
+# print("Does the F element exists or not : {}, \n If the above value is True -> that the theorem is valid otherwise the further work has to be done yet :)".format('F' in set_all_expression))
 # print(parents)
 # (~P>(P>~Q)) we need to add this axiom later for it to be deduced
 
