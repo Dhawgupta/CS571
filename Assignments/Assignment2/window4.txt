@@ -1,0 +1,35 @@
+Success Found Path
+The Start State :
+[[0 2 3]
+ [1 5 6]
+ [4 7 8]]
+The Goal State : 
+[[1 2 3]
+ [4 5 6]
+ [7 8 0]]
+States Explored : 8
+Iterations Requried to Reach Success : 5
+
+Total Number of States on Path : 4
+Optimal Path 
+[[0 2 3]
+ [1 5 6]
+ [4 7 8]]
+
+[[1 2 3]
+ [0 5 6]
+ [4 7 8]]
+
+[[1 2 3]
+ [4 5 6]
+ [0 7 8]]
+
+[[1 2 3]
+ [4 5 6]
+ [7 0 8]]
+
+[[1 2 3]
+ [4 5 6]
+ [7 8 0]]
+
+Optimal Cost of the Path , Same as Depth : 4

@@ -1,7 +1,7 @@
 import pickle as pkl
 import random
 from Final import *
-
+import time
 step_list = []
 start_state_list = dict()
 end_state = 'end.txt'
@@ -29,16 +29,25 @@ with open(fil1, 'r') as f:
 with open(fil2, 'r') as f:
     start_state_list = pkl.load(f)
 
-filename = 'results_h3.pkl'
-
+filename = 'results_h3_5.pkl'
+filename2 = 'results_h3_time5.pkl'
 
 # what all do we need to store
 results = dict() # this will contain the number of expplored states and the number of iterations
+times = dict()
 for step in step_list:
+    start_time = time.time()
     results[step] = run_experiment(start_state_list[step], goal, h3)
+    end_time = time.time()
+    times[step] = end_time - start_time
+    print("The time taken (sec) {}".format(times[step]))
+
     print("saving")
     with open(filename, 'wb') as f:
         pkl.dump(results, f)
+    with open(filename2, 'wb') as f:
+        pkl.dump(times, f)
+
     print("Done saving")
 
 

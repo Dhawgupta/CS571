@@ -1,0 +1,133 @@
+Start File not enterd hence generation it from random
+
+
+Node   : 135426780 Heuristic : 4
+The neightbors are as follows : 
+
+Child  : 135420786 Heuristic : 6
+Child  : 135426708 Heuristic : 6
+
+
+Node   : 135420786 Heuristic : 6
+The neightbors are as follows : 
+
+Child  : 130425786 Heuristic : 6
+Child  : 135402786 Heuristic : 8
+Child  : 135426780 Heuristic : 4
+
+
+Node   : 135426708 Heuristic : 6
+The neightbors are as follows : 
+
+Child  : 135406728 Heuristic : 8
+Child  : 135426078 Heuristic : 8
+Child  : 135426780 Heuristic : 4
+
+
+Node   : 130425786 Heuristic : 6
+The neightbors are as follows : 
+
+Child  : 103425786 Heuristic : 6
+Child  : 135420786 Heuristic : 6
+
+
+Node   : 103425786 Heuristic : 6
+The neightbors are as follows : 
+
+Child  : 013425786 Heuristic : 8
+Child  : 130425786 Heuristic : 6
+Child  : 123405786 Heuristic : 4
+
+
+Node   : 123405786 Heuristic : 4
+The neightbors are as follows : 
+
+Child  : 103425786 Heuristic : 6
+Child  : 123045786 Heuristic : 6
+Child  : 123450786 Heuristic : 2
+Child  : 123485706 Heuristic : 4
+
+
+Node   : 123450786 Heuristic : 2
+The neightbors are as follows : 
+
+Child  : 120453786 Heuristic : 4
+Child  : 123405786 Heuristic : 4
+Child  : 123456780 Heuristic : 0
+
+
+Node   : 135426780 Heuristic : 3
+The neightbors are as follows : 
+
+Child  : 135420786 Heuristic : 5
+Child  : 135426708 Heuristic : 5
+
+
+Node   : 135420786 Heuristic : 5
+The neightbors are as follows : 
+
+Child  : 130425786 Heuristic : 5
+Child  : 135402786 Heuristic : 5
+Child  : 135426780 Heuristic : 3
+
+
+Node   : 135426708 Heuristic : 5
+The neightbors are as follows : 
+
+Child  : 135406728 Heuristic : 5
+Child  : 135426078 Heuristic : 6
+Child  : 135426780 Heuristic : 3
+
+
+Node   : 130425786 Heuristic : 5
+The neightbors are as follows : 
+
+Child  : 103425786 Heuristic : 4
+Child  : 135420786 Heuristic : 5
+
+
+Node   : 135402786 Heuristic : 5
+The neightbors are as follows : 
+
+Child  : 105432786 Heuristic : 5
+Child  : 135042786 Heuristic : 6
+Child  : 135420786 Heuristic : 5
+Child  : 135482706 Heuristic : 6
+
+
+Node   : 135406728 Heuristic : 5
+The neightbors are as follows : 
+
+Child  : 105436728 Heuristic : 5
+Child  : 135046728 Heuristic : 6
+Child  : 135460728 Heuristic : 6
+Child  : 135426708 Heuristic : 5
+
+
+Node   : 103425786 Heuristic : 4
+The neightbors are as follows : 
+
+Child  : 013425786 Heuristic : 5
+Child  : 130425786 Heuristic : 5
+Child  : 123405786 Heuristic : 3
+
+
+Node   : 123405786 Heuristic : 3
+The neightbors are as follows : 
+
+Child  : 103425786 Heuristic : 4
+Child  : 123045786 Heuristic : 4
+Child  : 123450786 Heuristic : 2
+Child  : 123485706 Heuristic : 4
+
+
+Node   : 123450786 Heuristic : 2
+The neightbors are as follows : 
+
+Child  : 120453786 Heuristic : 3
+Child  : 123405786 Heuristic : 3
+Child  : 123456780 Heuristic : 0
+Time h1 : 0
+Time h2 : 0.00425910949707
+Time h3 : 0.00289702415466
+True

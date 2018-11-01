@@ -1,0 +1,31 @@
+h=readfis('inverted_pendulum.fis');
+a=input(' angular position=');
+b=input(' angular velocity=');
+I=evalfis([a b],h); % current min and max range may be set
+disp(['output current in amperes is : ', num2str(I)]);
+
+
+theta=a; % intial angular position of bob
+omega=b; % initial angular velocity of bob
+m=1; % mass of rod
+M=2; % mass of bob
+l=1; % length of rod
+T=28.6; % torque constant corresponding to DC motor(15v)
+g=9.8; % acceleration due to gravity
+IN_total= (M+ m/3)*l*l; % total moment of inertia of bob and rod
+ang_accl= (1/IN_total)*((T*I)+(M*g*l*sin(theta))+(m*g*l*0.5*sin(theta))); % total angular acceleration
+
+theta_new= theta + omega*t+ ((t^2)*0.5*ang_accl);
+omega_new= omega+ angl_accl*t;
+
+
+a1=(3*T*I)/(m*l*l*2)- (3*g*cos(a))/(4*l);
+b1=b;
+c1=a;
+
+r = roots([a1,b1,c1]);
+TOr= T*I;
+disp(['the time taken to reverse to the original position is : ', num2str(r(1,1))]);
+disp(['the o/p torque to stabilize the pendulum is : ', num2str(TOr)]);
+
+

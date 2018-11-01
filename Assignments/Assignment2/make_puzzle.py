@@ -194,7 +194,7 @@ def generate_puzzle(goal,steps = 1000):
 	:return: Return the puzzled matrix
 	'''
 	puzzle = goal.copy()
-	print(valid_action(puzzle, 0))
+	# print(valid_action(puzzle, 0))
 	shuffle = int(steps)
 	action = 0
 	for step in range(shuffle):
